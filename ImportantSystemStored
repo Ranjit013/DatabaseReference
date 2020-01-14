@@ -1,0 +1,13 @@
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxImportantDatabase Commands xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+
+===============================================================================================================
+#This command gets all the system stored procedure
+SELECT QUOTENAME(SCHEMA_NAME(schema_id)) + '.' + QUOTENAME(name)
+FROM   sys.all_objects
+WHERE  type = 'P'
+       AND is_ms_shipped = 1
+
+===============================================================================================================
