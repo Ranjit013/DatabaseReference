@@ -15,3 +15,13 @@ WHERE  type = 'P'
 set statistics io on
 
 ===============================================================================================================
+
+#To identify the query cache plan and the number of execution
+
+SELECT cp.usecounts, cp.cacheobjtype, cp.objtype, st.text, qp.query_plan
+FROM sys.dm_exec_cached_plans AS cp
+CROSS APPLY sys.dm_exec_sql_text(plan_handle) AS st
+CROSS APPLY sys.dm_exec_query_plan(plan_handle) AS qp
+ORDER BY cp.usecounts DESC
+
+===============================================================================================================
